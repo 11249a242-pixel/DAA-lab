@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+int stepCount = 0;  // Global counter
+
+void towerofhanoi(int n, char source, char destination, char auxiliary)
+{
+    if (n <= 0)
+        return;
+
+    if (n == 1)
+    {
+        stepCount++;
+        printf("Step %d: Move disk 1 from %c to %c\n", stepCount, source, destination);
+        return;
+    }
+
+    towerofhanoi(n - 1, source, auxiliary, destination);
+
+    stepCount++;
+    printf("Step %d: Move disk %d from %c to %c\n", stepCount, n, source, destination);
+
+    towerofhanoi(n - 1, auxiliary, destination, source);
+}
+
+int main()
+{
+    int n;
+
+    printf("Enter number of disks: ");
+    if (scanf("%d", &n) != 1 || n <= 0)
+    {
+        printf("Invalid input! Please enter a positive integer.\n");
+        return 1;
+    }
+
+    towerofhanoi(n, 'S', 'D', 'A');
+
+    printf("\nTotal moves = %d\n", stepCount);
+
+    return 0;
+}
