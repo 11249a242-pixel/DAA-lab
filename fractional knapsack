@@ -13,9 +13,9 @@ void sort(struct item items[], int n) {
                 temp = items[j];
                 items[j] = items[j + 1];
                 items[j + 1] = temp;
-            }
-        }
-    }
+}
+}
+}
 }
 int main() {
     int n, capacity;
@@ -39,7 +39,7 @@ int main() {
         } else {
             totalprofit += items[i].ppw * capacity;
             break;
-        }
+    }
     }
     printf("Maximum profit = %.2f\n", totalprofit);
     return 0;
